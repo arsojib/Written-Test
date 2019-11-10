@@ -1,0 +1,30 @@
+Write a video player application with ‘Play’, ‘Forward’ , ‘Rewind’ functionalities. Please write pseudocode for this program and explain the design pattern you will use to develop these three functionalities.
+
+
+Pseudocode 
+
+play.onClick() {
+                if (check video isPlaying()) {
+                    pause video
+                    set play button Icon(ic_play);
+                } else {
+                    play video
+					set play button Icon(ic_pause)
+                }
+            });
+
+rewind.onClick() {
+                if (video currentTime - rewindTime <= 0) {
+                    video seekTo(0);
+                } else {
+                    video seekTo(video currentTime - rewindTime);
+                }
+            });
+
+forward.onClick() {
+                if (videoCurrentTime + forwardTime >= 0) {
+                    video seekTo(video duration - 1000);
+                } else {
+                    video seekTo(video currentTime + forwardTime);
+                }
+            });

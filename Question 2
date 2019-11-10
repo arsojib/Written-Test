@@ -1,0 +1,103 @@
+Explain the design pattern used in following: 
+ 
+interface Vehicle { 
+	int set_num_of_wheels() 
+	int set_num_of_passengers() 
+	boolean has_gas()  
+	} 
+a) Explain how you can use the pattern to create car and plane class? 
+b) Use a different design pattern for this solution.
+
+
+
+
+In this design pattern there are 3 common function that represent the basic functionlity of Car and Plane class. We will implement the 
+Vehicle class on Car and Plane Class and modify those function body as our wish.
+
+public interface Vehicle {
+
+    int set_num_of_wheels();
+    int set_num_of_passengers();
+    boolean has_gas();
+
+}
+
+public class Car implements Vehicle {
+    @Override
+    public int set_num_of_wheels() {
+        return 0;
+    }
+
+    @Override
+    public int set_num_of_passengers() {
+        return 0;
+    }
+
+    @Override
+    public boolean has_gas() {
+        return false;
+    }
+}
+
+public class Plane implements Vehicle {
+    @Override
+    public int set_num_of_wheels() {
+        return 0;
+    }
+
+    @Override
+    public int set_num_of_passengers() {
+        return 0;
+    }
+
+    @Override
+    public boolean has_gas() {
+        return false;
+    }
+}
+
+
+
+
+
+
+We can use abstract to implement a different design pattern. Suppose Car and Plane both has the same number of Wheels. So we don't have to write/modify
+set_num_of_wheels() method every time. So we abstract set_num_of_passengers() and has_gas() function. And make set_num_of_wheels() a normal function with 
+body so this can return same value for Car and Plane when get called.
+
+public abstract class Vehicle {
+
+    int set_num_of_wheels() {
+        return 3;
+    }
+    abstract int set_num_of_passengers();
+    abstract boolean has_gas();
+
+}
+
+public class Car extends Vehicle {
+
+    @Override
+    int set_num_of_passengers() {
+        return 0;
+    }
+
+    @Override
+    boolean has_gas() {
+        return false;
+    }
+}
+
+
+public class APlane extends AVehicle {
+
+    @Override
+    int set_num_of_passengers() {
+        return 0;
+    }
+
+    @Override
+    boolean has_gas() {
+        return false;
+    }
+}

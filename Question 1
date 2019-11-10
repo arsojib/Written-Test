@@ -1,0 +1,43 @@
+Write a function that detects if two strings are anagram e.g. ‘bleat’ and ‘table’ are anagrams but ‘eat’ and ‘tar’ are not. 
+ 
+
+public class CheckAnagram {
+
+    public boolean checkAnagram(String text1, String text2) {
+        if ((text1 == null || text2 == null) || text1.length() != text2.length()) {
+            return false;
+        }
+        for (int i = 0; i < text1.length(); i++) {
+            boolean status = false;
+            for (int j = 0; j < text2.length(); j++) {
+                if (text1.charAt(i) == text2.charAt(j)) {
+                    text2 = text2.substring(0, j) + text2.substring(j + 1);
+                    status = true;
+                    break;
+                }
+            }
+            if (!status) {
+                return false;
+            }
+        }
+        return text2.length() == 0;
+    }
+
+}
+
+
+Unit Test of CheckAnagram method.
+
+public class CheckAnagramUnitTest {
+
+    @Test
+    public void testIsAnagram() {
+        CheckAnagram checkAnagram = new CheckAnagram();
+        boolean result1 = checkAnagram.checkAnagram("bleat", "table");
+		assertTrue(result1);
+		
+//        boolean result2 = checkAnagram.checkAnagram("eat", "tar");
+//        assertFalse(result2);
+    }
+	
+}
